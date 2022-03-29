@@ -1,61 +1,55 @@
 import React from "react";
-import hanger from "./assets/hanger";
-import wash from "./assets/wash";
-import iron from "./assets/iron";
-import laundry from "./assets/laundry";
+import { Link } from "react-router-dom";
+import hanger from "./assets/hanger.png";
+import wash from "./assets/wash.png";
+import iron from "./assets/iron.png";
+import laundry from "./assets/laundry.png";
 
 const ServiceCard = (props) => {
-  <div class="col-sm-6 col-md-5 col-lg-5 item">
-    <div
-      class="box"
-      style={{ borderTopColor: "rgb(80,94,108)", borderRadius: "10px" }}
-    >
-      <img class="img-fluid" src={props.ServiceImg} alt="" />
-      <h3 class="name">{props.ServiceHeading}</h3>
-      <a
-        class="learn-more"
-        href=" "
-        style={{ borderColor: "#3552c8", color: "#3552c8;" }}
+  return (
+    <div className="col-sm-6 col-md-5 col-lg-5 item">
+      <div
+        className="box"
+        style={{ borderTopColor: "rgb(80,94,108)", borderRadius: "10px" }}
       >
-        {props.ServiceLink}
-      </a>
+        <img className="img-fluid" src={props.ServiceImg} alt="" />
+        <h3 className="name">{props.ServiceHeading}</h3>
+        <Link
+          to="/category"
+          className="learn-more"
+          href=" "
+          style={{ borderColor: "#3552c8", color: "#3552c8" }}
+        >
+          Proceed
+        </Link>
+      </div>
     </div>
-  </div>;
+  );
 };
 
 function Services() {
   return (
     <div>
       <section
-        class="features-boxed"
+        className="features-boxed"
         style={{ fontFamily: "Sora, sans-serif", background: "#e3ebff" }}
       >
-        <div class="container">
-          <div class="intro">
-            <h2 class="text-center" style={{ color: "#3552c8" }}>
+        <div className="container">
+          <div className="intro">
+            <h2 className="text-center" style={{ color: "#3552c8" }}>
               Pick a Service
             </h2>
           </div>
-          <div class="row justify-content-center features">
-            <ServiceCard
-              ServiceImg={hanger}
-              ServiceHeading="Dry Cleaning"
-              ServiceLink=""
-            />
-            <ServiceCard
-              ServiceImg={wash}
-              ServiceHeading="Wash &amp; Fold"
-              ServiceLink=""
-            />
+          <div className="row justify-content-center features">
+            <ServiceCard ServiceImg={hanger} ServiceHeading="Dry Cleaning" />
+            <ServiceCard ServiceImg={wash} ServiceHeading="Wash &amp; Fold" />
             <ServiceCard
               ServiceImg={iron}
               ServiceHeading="Iron &amp; Steam press"
-              ServiceLink=""
             />
             <ServiceCard
               ServiceImg={laundry}
               ServiceHeading="Complete Laundry"
-              ServiceLink=""
             />
           </div>
         </div>

@@ -1,13 +1,14 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 function NotFound() {
   return (
     <div>
       <section style={{ minHeight: "60vh", height: "0px", margin: "40px;" }}>
-        <div class="row text-center">
-          <div class="col">
+        <div className="row text-center">
+          <div className="col">
             <h1
-              class="display-1"
+              className="display-1"
               style={{
                 color: "#00c9b7",
                 fontFamily: "'Bowlby One', serif",
@@ -18,17 +19,18 @@ function NotFound() {
             </h1>
           </div>
         </div>
-        <div class="row text-center">
-          <div class="col" style={{ paddingTop: "10px;" }}>
+        <div className="row text-center">
+          <div className="col" style={{ paddingTop: "10px;" }}>
             <p style={{ fontFamily: " Sora, sans-serif", fontSize: "20px" }}>
               Oops! The page you requested was not found.
             </p>
           </div>
         </div>
-        <div class="row text-center">
-          <div class="col">
-            <button
-              class="btn btn-primary"
+        <div className="row text-center">
+          <div className="col">
+            <Link
+              to="/"
+              className="btn btn-primary"
               type="button"
               style={{
                 borderColor: "#3552c8",
@@ -39,7 +41,7 @@ function NotFound() {
               }}
             >
               Back to Home
-            </button>
+            </Link>
           </div>
         </div>
       </section>

@@ -1,26 +1,26 @@
 import React from "react";
-import hanger from "./assets/hanger";
-import wash from "./assets/wash";
-import iron from "./assets/iron";
-import laundry from "./assets/laundry";
+import hanger from "./assets/hanger.png";
+import wash from "./assets/wash.png";
+import iron from "./assets/iron.png";
+import laundry from "./assets/laundry.png";
 
 const OurService = (props) => {
   return (
-    <div class="col-sm-6 item">
-      <div class="row">
-        <div class="col-md-12 col-lg-5 text-center">
+    <div className="col-sm-6 item">
+      <div className="row">
+        <div className="col-md-12 col-lg-5 text-center">
           <img
-            class="img-fluid"
+            className="img-fluid"
             src={props.ColImage}
             alt=""
             style={{ height: "150px" }}
           />
         </div>
-        <div class="col">
-          <h3 class="name">
+        <div className="col">
+          <h3 className="name">
             <strong>{props.ColHeader}</strong>
           </h3>
-          <p class="description">{props.ColDescribe}</p>
+          <p className="description">{props.ColDescribe}</p>
         </div>
       </div>
     </div>
@@ -30,14 +30,17 @@ const OurService = (props) => {
 function About() {
   return (
     <div>
-      <section class="projects-horizontal">
-        <div class="container" style={{ fontFamily: "Sora, sans-serif" }}>
-          <div class="intro">
-            <h2 class="text-center" style={{ fontFamily: "Sora, sans-serif" }}>
+      <section className="projects-horizontal">
+        <div className="container" style={{ fontFamily: "Sora, sans-serif" }}>
+          <div className="intro">
+            <h2
+              className="text-center"
+              style={{ fontFamily: "Sora, sans-serif" }}
+            >
               <strong>About Our Services</strong>
             </h2>
           </div>
-          <div class="row projects">
+          <div className="row projects">
             <OurService
               ColImage={hanger}
               ColHeader="Dry cleaning"
@@ -62,15 +65,18 @@ function About() {
         </div>
       </section>
       <section style={{ fontFamily: "Sora, sans-serif", marginTop: "20px" }}>
-        <div class="intro">
-          <h2 class="text-center" style={{ marginTop: "50px" }}>
+        <div className="intro">
+          <h2 className="text-center" style={{ marginTop: "50px" }}>
             <strong>About TidyUp</strong>
           </h2>
         </div>
-        <div class="container" style={{ height: "400px", marginTop: "30px" }}>
-          <div class="row" style={{ height: "300px" }}>
+        <div
+          className="container"
+          style={{ height: "400px", marginTop: "30px" }}
+        >
+          <div className="row" style={{ height: "300px" }}>
             <div
-              class="col-md-5 d-flex justify-content-center"
+              className="col-md-5 d-flex justify-content-center"
               style={{
                 background: "#acbfe6",
                 height: "300px",
@@ -82,8 +88,8 @@ function About() {
                 alt=""
               />
             </div>
-            <div class="col" style={{ height: "300px" }}>
-              <p class="lead" style={{ height: "300px", padding: "20px;" }}>
+            <div className="col" style={{ height: "300px" }}>
+              <p className="lead" style={{ height: "300px", padding: "20px;" }}>
                 TidyUp brings laundry services online for the convenience of
                 their customers and to help them get their laundry done without
                 having any obstacle. Professionals and the staff at TidyUp carry

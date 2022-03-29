@@ -1,14 +1,18 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 function Register() {
   return (
     <div>
-      <section class="login-clean" style={{ background: "#e3ebff" }}>
+      <section className="login-clean" style={{ background: "#e3ebff" }}>
         <form
           method="post"
           style={{ borderRadius: "5px", background: "rgba(255,255,255,0.82)" }}
         >
-          <div class="illustration" style={{ fontFamily: "Sora, sans-serif" }}>
+          <div
+            className="illustration"
+            style={{ fontFamily: "Sora, sans-serif" }}
+          >
             <h1
               style={{
                 color: "#37434d",
@@ -17,60 +21,64 @@ function Register() {
                 fontSize: "24.9px",
               }}
             >
-              Login
+              Sign Up
             </h1>
           </div>
-          <div class="form-floating mb-3">
+          <div className="form-floating mb-3 mt-3">
             <input
-              class="form-control"
+              className="form-control"
               type="text"
               placeholder="Name"
               style={{ background: "var(--bs-body-bg)", borderRadius: "5px" }}
             />
-            <label for="floatingInput">Name</label>
+            <label htmlFor="floatingInput">Name</label>
           </div>
-          <div class="form-floating mb-3">
+          <div className="form-floating mb-3 mt-3">
             <input
-              class="form-control"
+              className="form-control"
               type="email"
               name="email"
               placeholder="Email"
               style={{ background: "var(--bs-body-bg)", borderRadius: "5px" }}
             />
-            <label for="floatingInput">Email</label>
+            <label htmlFor="floatingInput">Email</label>
           </div>
-          <div class="form-floating mb-3">
+          <div className="form-floating mb-3 mt-3">
             <input
-              class="form-control"
+              className="form-control"
               type="password"
               name="password"
               placeholder="Password"
               style={{ background: "var(--bs-body-bg)", borderRadius: "5px" }}
             />
-            <label for="floatingInput">Password</label>
+            <label htmlFor="floatingInput">Password</label>
           </div>
-          <div class="form-floating mb-3">
+          <div className="form-floating mb-3 mt-3">
             <input
-              class="form-control"
+              className="form-control"
               type="password"
               name="password"
               placeholder="Password"
               style={{ background: "var(--bs-body-bg)", borderRadius: "5px" }}
             />
-            <label for="floatingInput">Confirm Password</label>
+            <label htmlfor="floatingInput">Confirm Password</label>
           </div>
-          <div class="mb-3">
+          <div className="mb-3">
             <button
-              class="btn btn-primary d-block w-100"
+              className="btn btn-primary d-block w-100"
               type="submit"
               style={{ background: "#3552c8", fontFamily: "Sora, sans-serif" }}
             >
               Sign Up
             </button>
           </div>
-          <a class="forgot" href=" " style={{ fontFamily: "Sora, sans-serif" }}>
+          <Link
+            className="forgot"
+            to="/login"
+            style={{ fontFamily: "Sora, sans-serif" }}
+          >
             Already have an account?
-          </a>
+          </Link>
         </form>
       </section>
     </div>

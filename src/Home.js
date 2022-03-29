@@ -1,6 +1,7 @@
 import React from "react";
 import lead from "./assets/lead.jpg";
 import { Accordion } from "react-bootstrap";
+import { Link } from "react-router-dom";
 
 function Faq(props) {
   return (
@@ -64,7 +65,8 @@ function Home() {
               more appealing. So stop waiting and make your clothes look like
               new.
             </p>
-            <button
+            <Link
+              to="/service"
               className="btn action-button"
               type="button"
               style={{
@@ -81,7 +83,7 @@ function Home() {
               }}
             >
               <strong>Know more</strong>
-            </button>
+            </Link>
           </div>
         </div>
       </section>
