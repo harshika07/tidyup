@@ -1,5 +1,6 @@
 import React from "react";
 import "../css/styles.css";
+import logo from "../assets/logo.png";
 import { Navbar, Container, Nav } from "react-bootstrap";
 
 function Header() {
@@ -7,7 +8,9 @@ function Header() {
     <div>
       <Navbar collapseOnSelect expand="lg" variant="light">
         <Container fluid>
-          <Navbar.Brand href="#home">Navbar</Navbar.Brand>
+          <Navbar.Brand href="#home">
+            <img className="img-responsive" src={logo} alt="brand-logo" />
+          </Navbar.Brand>
           <Navbar.Toggle
             aria-controls="responsive-navbar-nav"
             className="navbar-toogler"

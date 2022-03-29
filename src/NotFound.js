@@ -3,7 +3,7 @@ import React from "react";
 function NotFound() {
   return (
     <div>
-      <section style={{ minHeight: "100vh", height: "0px", margin: "40px;" }}>
+      <section style={{ minHeight: "60vh", height: "0px", margin: "40px;" }}>
         <div class="row text-center">
           <div class="col">
             <h1
