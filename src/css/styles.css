@@ -201,7 +201,6 @@
   outline: none;
   color: inherit;
   text-indent: 8px;
-  height: 42px;
 }
 
 .login-clean form .btn-primary {
@@ -226,7 +225,7 @@
 .login-clean form .forgot {
   display: block;
   text-align: center;
-  font-size: 12px;
+  font-size: 13px;
   color: #6f7a85;
   opacity: 0.9;
   text-decoration: none;
