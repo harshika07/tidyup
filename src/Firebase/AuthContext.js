@@ -28,6 +28,10 @@ export function AuthProvider({ children }) {
     return auth.signOut();
   }
 
+  function updateEmail(email) {
+    return auth.currentUser.updateEmail(email);
+  }
+
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((user) => {
       let userData = { role: "user" };
@@ -57,6 +61,7 @@ export function AuthProvider({ children }) {
     login,
     signup,
     logout,
+    updateEmail,
   };
 
   return (

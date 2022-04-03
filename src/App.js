@@ -8,11 +8,16 @@ import Services from "./Services";
 import Register from "./Register";
 import NotFound from "./NotFound";
 import Login from "./Login";
-import Category from "./Category";
+import DryClean from "./DryClean";
+import Wash from "./Wash";
+import Iron from "./Iron";
+import Laundry from "./Laundry";
 import Profile from "./Profile";
 import Footer from "./Components/Footer";
 import { AuthProvider } from "./Firebase/AuthContext";
 import { db } from "./Firebase/Firebase";
+import Shipping from "./Shipping";
+import UpdateProfile from "./UpdateProfile";
 
 function App() {
   const [role, setRole] = useState("user");
@@ -45,8 +50,13 @@ function App() {
           <Route path="/service" element={<Services />} />
           <Route path="/register" element={<Register />} />
           <Route path="/login" element={<Login />} />
-          <Route path="/category" element={<Category />} />
+          <Route path="/service/dryclean" element={<DryClean />} />
+          <Route path="/service/wash" element={<Wash />} />
+          <Route path="/service/iron" element={<Iron />} />
+          <Route path="/service/laundry" element={<Laundry />} />
+          <Route path="/shipping" element={<Shipping />} />
           <Route path="/profile" element={<Profile />} />
+          <Route path="/updateprofile" element={<UpdateProfile />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
         <Footer />

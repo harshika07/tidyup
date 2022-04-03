@@ -14,14 +14,7 @@ const ServiceCard = (props) => {
       >
         <img className="img-fluid" src={props.ServiceImg} alt="" />
         <h3 className="name">{props.ServiceHeading}</h3>
-        <Link
-          to="/category"
-          className="learn-more"
-          href=" "
-          style={{ borderColor: "#3552c8", color: "#3552c8" }}
-        >
-          Proceed
-        </Link>
+        <Link to={{ pathname: `${props.Category}` }}>Proceed</Link>
       </div>
     </div>
   );
@@ -41,15 +34,26 @@ function Services() {
             </h2>
           </div>
           <div className="row justify-content-center features">
-            <ServiceCard ServiceImg={hanger} ServiceHeading="Dry Cleaning" />
-            <ServiceCard ServiceImg={wash} ServiceHeading="Wash &amp; Fold" />
+            <ServiceCard
+              ServiceImg={hanger}
+              ServiceHeading="Dry Cleaning"
+              Category="/service/dryclean"
+            />
+            <ServiceCard
+              ServiceImg={wash}
+              ServiceHeading="Wash &amp; Fold"
+              Category="/service/wash"
+            />
             <ServiceCard
               ServiceImg={iron}
               ServiceHeading="Iron &amp; Steam press"
+              Category="/service/iron"
             />
+
             <ServiceCard
               ServiceImg={laundry}
               ServiceHeading="Complete Laundry"
+              Category="/service/laundry"
             />
           </div>
         </div>

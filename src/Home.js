@@ -88,87 +88,92 @@ function Home() {
         </div>
       </section>
       <section
-        class="features-clean"
+        className="features-clean"
         style={{ fontFamily: "Sora, sans-serif" }}
       >
-        <div class="container">
-          <div class="intro" style={{ paddingTop: "70px;" }}>
+        <div className="container">
+          <div className="intro" style={{ paddingTop: "70px;" }}>
             <h2
-              class="text-center"
+              className="text-center"
               style={{ color: "#0c022f", fontWeight: "800" }}
             >
               Why choose us
             </h2>
           </div>
           <div
-            class="row features"
+            className="row features"
             style={{ paddingTop: "20px", background: "#e3ebff" }}
           >
-            <div class="col-sm-6 col-lg-4 item">
+            <div className="col-sm-6 col-lg-4 item">
               <i
-                class="fa fa-check-square-o icon"
+                className="fa fa-check-square-o icon"
                 style={{ color: "#3552c8" }}
               ></i>
-              <h3 class="name">Quality Assurance</h3>
-              <p class="description">
+              <h3 className="name">Quality Assurance</h3>
+              <p className="description">
                 Guaranteed quality services.&nbsp; Most trusted laundry
                 services.
               </p>
             </div>
-            <div class="col-sm-6 col-lg-4 item">
-              <i class="far fa-clock icon" style={{ color: "#3552c8" }}></i>
-              <h3 class="name">Save Time</h3>
-              <p class="description">
+            <div className="col-sm-6 col-lg-4 item">
+              <i className="far fa-clock icon" style={{ color: "#3552c8" }}></i>
+              <h3 className="name">Save Time</h3>
+              <p className="description">
                 Save your time from going to a laundromat. We offer on-time
                 services for all
               </p>
             </div>
-            <div class="col-sm-6 col-lg-4 item">
+            <div className="col-sm-6 col-lg-4 item">
               <i
-                class="far fa-credit-card icon"
+                className="far fa-credit-card icon"
                 style={{ color: "#3552c8" }}
               ></i>
-              <h3 class="name">Easy Payment</h3>
-              <p class="description">
+              <h3 className="name">Easy Payment</h3>
+              <p className="description">
                 Make payment easily from your mobile device or computer.
               </p>
             </div>
-            <div class="col-sm-6 col-lg-4 item">
+            <div className="col-sm-6 col-lg-4 item">
               <i
-                class="far fa-credit-card icon"
+                className="far fa-credit-card icon"
                 style={{ color: "#3552c8" }}
               ></i>
-              <h3 class="name">Germ-free</h3>
-              <p class="description">
+              <h3 className="name">Germ-free</h3>
+              <p className="description">
                 Hygienic and sanitised environment and tools
               </p>
             </div>
-            <div class="col-sm-6 col-lg-4 item">
-              <i class="fas fa-truck icon" style={{ color: "#3552c8 " }}></i>
-              <h3 class="name">Free Pickup &amp; Delivery</h3>
-              <p class="description">No extra charges for pickup or delivery</p>
-            </div>
-            <div class="col-sm-6 col-lg-4 item">
+            <div className="col-sm-6 col-lg-4 item">
               <i
-                class="far fa-money-bill-alt icon"
+                className="fas fa-truck icon"
+                style={{ color: "#3552c8 " }}
+              ></i>
+              <h3 className="name">Free Pickup &amp; Delivery</h3>
+              <p className="description">
+                No extra charges for pickup or delivery
+              </p>
+            </div>
+            <div className="col-sm-6 col-lg-4 item">
+              <i
+                className="far fa-money-bill-alt icon"
                 style={{ color: " #3552c8" }}
               ></i>
-              <h3 class="name">Affordable Prices</h3>
-              <p class="description">
+              <h3 className="name">Affordable Prices</h3>
+              <p className="description">
                 Online services with no extra cost and picket friendly deals
               </p>
             </div>
           </div>
         </div>
       </section>
-      <section class="d-grid" style={{ margin: "30px" }}>
-        <div class="row justify-content-start">
+      <section className="d-grid" style={{ margin: "30px" }}>
+        <div className="row justify-content-start">
           <div
-            class="col-lg-5 float-end"
+            className="col-lg-5 float-end"
             style={{ paddingRight: "10px", paddingLeft: "20px" }}
           >
             <h1
-              class="display-5 text-start"
+              className="display-5 text-start"
               style={{
                 fontWeight: " 800",
                 fontFamily: "Sora, sans-serif",
@@ -183,7 +188,7 @@ function Home() {
               Frequently Asked Questions
             </h1>
             <p
-              class="lead text-start"
+              className="lead text-start"
               style={{
                 fontFamily: "Sora, sans-serif",
                 margin: "20px 0px 20px",
@@ -200,7 +205,7 @@ function Home() {
               then mail us your queries
             </p>
             <p
-              class="lead text-start"
+              className="lead text-start"
               style={{
                 fontFamily: "Sora, sans-serif",
                 margin: " 20px 0px 20px",
@@ -211,13 +216,16 @@ function Home() {
               }}
             >
               <i
-                class="far fa-envelope icon"
+                className="far fa-envelope icon"
                 style={{ color: "#3552c8", fontSize: "24px" }}
               ></i>
               &nbsp; info@tidyup.com
             </p>
           </div>
-          <div class="col" style={{ paddingTop: "30px", marginRight: "20px" }}>
+          <div
+            className="col"
+            style={{ paddingTop: "30px", marginRight: "20px" }}
+          >
             <Faq eventKey={1} />
             <Faq eventKey={2} />
             <Faq eventKey={3} />

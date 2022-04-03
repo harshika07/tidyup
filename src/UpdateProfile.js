@@ -1,26 +1,60 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { useAuth } from "./Firebase/AuthContext";
 import { Link, useNavigate } from "react-router-dom";
 import { Alert } from "react-bootstrap";
-import { auth, db } from "./Firebase/Firebase";
+import { db, auth, updateUser } from "./Firebase/Firebase";
 
-function Profile() {
+function UpdateProfile() {
+  const nameRef = useRef();
+  const emailRef = useRef();
+  const phoneRef = useRef();
+  const addressRef = useRef();
+  const { currentUser, updateEmail } = useAuth();
   const [error, setError] = useState("");
-  const { logout } = useAuth();
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
-  async function handleLogout() {
+  async function handleSubmit(e) {
+    e.preventDefault();
+
+    const promises = [];
+    setLoading(true);
     setError("");
 
-    try {
-      logout();
-      navigate("/login");
-    } catch {
-      setError("Failed to logout");
+    if (emailRef.current.value !== currentUser.email) {
+      promises.push(updateEmail(emailRef.current.value));
     }
+
+    updateUser(auth.currentUser.uid, {
+      displayName: nameRef.current.value,
+      email: emailRef.current.value,
+      phone: phoneRef.current.value,
+      address: addressRef.current.value,
+    });
+
+    if (auth.currentUser.displayName !== nameRef.current.value) {
+      await auth.currentUser.updateProfile({
+        displayName: nameRef.current.value,
+      });
+    }
+    if (auth.currentUser.email !== emailRef.current.value) {
+      await auth.currentUser.updateEmail({
+        email: emailRef.current.value,
+      });
+    }
+
+    Promise.all(promises)
+      .then(() => {
+        navigate("/profile");
+      })
+      .catch(() => {
+        setError("Failed to update account");
+      })
+      .finally(() => {
+        setLoading(false);
+      });
   }
 
-  const [loading, setLoading] = useState(true);
   const [ProfileInfo, setProfileInfo] = useState({});
   useEffect(() => {
     const fetchData = async () => {
@@ -29,7 +63,9 @@ function Profile() {
           .collection("users")
           .doc(auth.currentUser.uid)
           .get();
+
         console.log("response", response);
+
         let data = { title: "not found" };
 
         if (response.exists) {
@@ -37,24 +73,25 @@ function Profile() {
           data = response.data();
           console.log(data);
         }
-        setError("");
+
         setProfileInfo(data);
         setLoading(false);
-      } catch (error) {
-        setError(error);
+      } catch (err) {
+        console.error(err);
       }
     };
+
     fetchData();
   }, []);
 
   return (
     <div>
       <div>
-        <h2 className="text-center mb-4 mt-4">Personal Profile</h2>
+        <h2 className="text-center mb-4">Profile</h2>
         {error && <Alert variant="danger">{error}</Alert>}
       </div>
       <div>
-        <form action="" style={{ marginBottom: "60px" }}>
+        <form onSubmit={handleSubmit} style={{ marginBottom: "60px" }}>
           <div className="container">
             <div className="container">
               <div className="row justify-content-md-center">
@@ -63,50 +100,46 @@ function Profile() {
                     <div className="card-body">
                       <div className="row gutters">
                         <div className="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-                          {error && <Alert variant="danger">{error}</Alert>}
                           <h6 className="mb-2 text-primary">
                             Personal Details
                           </h6>
                         </div>
                         <div className="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
-                          {console.log(ProfileInfo.displayName)}
                           <div className="form-group">
-                            <label Htmlfor="fullName">Full Name</label>
+                            <label for="fullName">Full Name</label>
                             <input
                               type="text"
                               className="form-control"
                               id="fullName"
                               placeholder="Enter full name"
-                              value={ProfileInfo.displayName}
-                              disabled="true"
+                              defaultValue={ProfileInfo.displayName}
+                              ref={nameRef}
                             />
                           </div>
                         </div>
-
                         <div className="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
                           <div className="form-group">
-                            <label Htmlfor="eMail">Email</label>
+                            <label for="eMail">Email</label>
                             <input
                               type="email"
                               className="form-control"
-                              id="eMail"
+                              id="email"
                               placeholder="Enter email ID"
-                              value={ProfileInfo.email}
-                              disabled="true"
+                              defaultValue={ProfileInfo.email}
+                              ref={emailRef}
                             />
                           </div>
                         </div>
-
                         <div className="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
                           <div className="form-group">
-                            <label Htmlfor="phone">Phone</label>
+                            <label for="phone">Phone</label>
                             <input
                               type="text"
                               className="form-control"
                               id="phone"
                               placeholder="Enter phone number"
-                              value={ProfileInfo.phone}
-                              disabled="true"
+                              defaultValue={ProfileInfo.phone}
+                              ref={phoneRef}
                             />
                           </div>
                         </div>
@@ -121,29 +154,28 @@ function Profile() {
                             name="Address"
                             placeholder="Address"
                             rows="3"
-                            value={ProfileInfo.address}
-                            disabled="true"
+                            defaultValue={ProfileInfo.address}
+                            ref={addressRef}
                           ></textarea>
                         </div>
                       </div>
                       <div className="row gutters">
                         <div className="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                           <div className="text-right">
-                            <button
-                              type="button"
-                              id="submit"
-                              name="submit"
-                              className="btn btn-secondary me-2"
-                              onClick={handleLogout}
-                            >
-                              Log Out
-                            </button>
                             <Link
-                              to="/updateprofile"
-                              className="btn btn-primary"
+                              to="/profile"
+                              className="btn btn-danger"
+                              style={{ marginTop: "10px" }}
                             >
-                              Update
+                              Cancel
                             </Link>
+                            <button
+                              type="submit"
+                              className="btn btn-primary"
+                              style={{ marginTop: "10px", marginLeft: "10px" }}
+                            >
+                              Confirm Update
+                            </button>
                           </div>
                         </div>
                       </div>
@@ -159,4 +191,4 @@ function Profile() {
   );
 }
 
-export default Profile;
+export default UpdateProfile;

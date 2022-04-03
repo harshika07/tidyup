@@ -28,3 +28,12 @@ export async function createUser(userId, user) {
     console.error(err);
   }
 }
+
+export async function updateUser(userId, user) {
+  try {
+    console.log(userId);
+    await db.collection("users").doc(userId).update(user);
+  } catch (err) {
+    console.error(err);
+  }
+}
